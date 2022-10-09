@@ -1,0 +1,100 @@
+{block title}Category Page{/block}
+
+{* PageCSS *}
+{block pageCSS}
+<link rel="stylesheet" href="{$baseUrl}/assets/vendor/libs/bootstrap-select/bootstrap-select.css"/>
+{/block}
+{* /PageCSS *}
+
+{* vendorJS *}
+{block vendorJS}
+<script src="{$baseUrl}/assets/vendor/libs/bootstrap-select/bootstrap-select.js"></script>
+{/block}
+{* /vendorJS *}
+
+{* breadcrumb *}
+{block breadcrumb}
+    <li class="breadcrumb-item text-capitalize">
+        <a n:href="Category:">Danh mục sản phẩm</a>
+    </li>
+
+    <li class="breadcrumb-item text-capitalize active">Danh sách</li>
+{/block}
+{* /breadcrumb *}
+
+{* Content *}
+{block content}
+<div class="row">
+    <div class="col-12">
+        <a href="" class="btn btn-label-danger mb-4">
+            <span class="tf-icons bx bx-arrow-back"></span> Quay Lại
+        </a>
+
+        <a href="" class="btn btn-label-primary mb-4">
+            <span class="tf-icons bx bx-plus"></span> Thêm Mới
+        </a>
+
+        <a href="" class="btn btn-label-secondary mb-4">
+            <span class="tf-icons bx bx-trash"></span> Thùng Rác
+        </a>
+    </div>
+
+    <div class="col-12">
+        <div class="card mb-4">
+            <h5 class="card-header text-capitalize">Danh sách danh mục</h5>
+
+            <div class="card-body">
+                {form searchForm class => 'row g-3'}
+                    <div class="col-md-6">
+                        {label search-name class => 'form-label'/}
+                        {input search-name class => 'form-control'}
+                    </div>
+
+                    <div class="col-md-6">
+                        {label search-parent_id class => 'form-label'/}
+                        {input search-parent_id class => 'bootstrap-select text-capitalize w-100', data-style => 'btn-default text-capitalize', 'data-size' => 8}
+                    </div>
+
+                    <div class="col-md-6">
+                        {label search-status class => 'form-label'/}
+                        {input search-status class => 'bootstrap-select text-capitalize w-100', data-style => 'btn-default text-capitalize', 'data-size' => 8}
+                    </div>
+
+                    <div class="col-md-6">
+                        {label search-popular class => 'form-label'/}
+                        {input search-popular class => 'bootstrap-select text-capitalize w-100', data-style => 'btn-default text-capitalize', 'data-size' => 8}
+                    </div>
+
+                    <div class="col-12 text-center">
+                        {input search-search class => 'btn btn-sm btn-primary text-capitalize'}
+                        {input search-reset class => 'btn btn-sm btn-warning text-capitalize'}
+
+                        <hr>
+                    </div>
+                {/form}
+
+                <div class="col-12">
+                    {form formList}
+                        <table class="dt-responsive table table-bordered text-nowrap" id="category-table">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th></th>
+                                    <th>Hình đại diện</th>
+                                    <th>Tên danh mục</th>
+                                    <th>Danh mục cha</th>
+                                    <th>Trạng thái</th>
+                                    <th>Nổi bật</th>
+                                    <th>Ngày tạo</th>
+                                    <th>Ngày sửa</th>
+                                    <th>Thao tác</th>
+                                </tr>
+                            </thead>
+                        </table>
+                    {/form}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{* /Content *}

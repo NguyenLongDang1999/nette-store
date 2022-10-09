@@ -1,0 +1,57 @@
+#-------------------------
+# Config
+#-------------------------
+
+config/local.neon
+
+#-------------------------
+# Environment Files
+#-------------------------
+# These should never be under version control,
+# as it poses a security risk.
+.env
+
+#-------------------------
+# Composer
+#-------------------------
+/vendor
+
+#-------------------------
+# IDE / Development Files
+#-------------------------
+
+# Modules Testing
+_modules/*
+
+# phpenv local config
+.php-version
+
+# Netbeans
+nbproject/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+.nb-gradle/
+
+# Sublime Text
+*.tmlanguage.cache
+*.tmPreferences.cache
+*.stTheme.cache
+*.sublime-workspace
+*.sublime-project
+.phpintel
+/api/
+
+# Jetbrains editors (PHPStorm, etc)
+.idea/
+*.iml
+
+# Visual Studio Code
+.vscode/
+
+/results/
+/phpunit*.xml
+/.phpunit.*.cache

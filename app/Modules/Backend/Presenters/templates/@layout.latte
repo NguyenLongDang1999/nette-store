@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+
+<html
+        lang="vi"
+        class="light-style layout-navbar-fixed layout-menu-fixed"
+        dir="ltr"
+        data-theme="theme-default"
+        data-assets-path="../../assets/"
+        data-template="vertical-menu-template-no-customizer"
+>
+    <head>
+        <meta charset="utf-8"/>
+        <meta
+                name="viewport"
+                content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"
+        />
+
+        <title>NetteStore - {block title|stripHtml|capitalize/}</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com"/>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+        <link
+                href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap"
+                rel="stylesheet"
+        />
+        <link rel="stylesheet" href="{$baseUrl}/assets/vendor/fonts/boxicons.css"/>
+        <link rel="stylesheet" href="{$baseUrl}/assets/vendor/css/rtl/core.css"/>
+        <link rel="stylesheet" href="{$baseUrl}/assets/vendor/css/rtl/theme-default.css"/>
+        <link rel="stylesheet" href="{$baseUrl}/assets/css/demo.css"/>
+        <link rel="stylesheet" href="{$baseUrl}/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css"/>
+        {block pageCSS/}
+        <script src="{$baseUrl}/assets/vendor/js/helpers.js"></script>
+        <script src="{$baseUrl}/assets/js/config.js"></script>
+    </head>
+
+    <body>
+        <!-- Layout wrapper -->
+        <div class="layout-wrapper layout-content-navbar">
+            <div class="layout-container">
+                <!-- Menu -->
+                <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+                    <div class="app-brand demo">
+                        <a href="javascript:void(0);" class="layout-menu-toggle menu-link text-large ms-auto">
+                            <i class="bx menu-toggle-icon d-none d-xl-block fs-4 align-middle"></i>
+                            <i class="bx bx-x d-block d-xl-none bx-sm align-middle"></i>
+                        </a>
+                    </div>
+
+                    <div class="menu-divider mt-0"></div>
+
+                    <div class="menu-inner-shadow"></div>
+
+                    <ul class="menu-inner py-1" n:inner-foreach="$core->menuList() as $item">
+                        <li class="menu-header small text-uppercase">
+                            <span class="menu-header-text">{$item['title']|capitalize}</span>
+                        </li>
+
+                        <li n:foreach="$item['content'] as $label" n:class="$presenter->isLinkCurrent($label['presenter'] . ':*') ? 'active open', 'menu-item'">
+                            <a n:class="$label['content'] ? 'menu-toggle', 'menu-link'" n:href="$label['href']">
+                                <i class="menu-icon tf-icons {$label['icon']}"></i>
+                                {$label['title']|capitalize}
+                            </a>
+
+                            <ul class="menu-sub" n:if="$label['content']">
+                                <li n:foreach="$label['content'] as $menu" n:class="$presenter->isLinkCurrent($label['presenter'] . ':' . $menu['name']) ? 'active', 'menu-item'">
+                                    <a n:href="$menu['href']" class="menu-link">{$menu['title']|capitalize}</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </aside>
+                <!-- / Menu -->
+
+                <!-- Layout container -->
+                <div class="layout-page">
+                    <!-- Navbar -->
+                    {include 'navbar.latte'}
+                    <!-- / Navbar -->
+
+                    <!-- Content wrapper -->
+                    <div class="content-wrapper">
+                        <!-- Content -->
+                        <div class="container-xxl flex-grow-1 container-p-y">
+                            <!-- Breadcrumbs -->
+                            <div class="row mb-4">
+                                <div class="col-12">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <nav aria-label="breadcrumb">
+                                                <ol class="breadcrumb breadcrumb-style1 mb-0">
+                                                    <li class="breadcrumb-item">
+                                                        <a n:href="Dashboard:">Trang Chủ</a>
+                                                    </li>
+
+                                                    {block breadcrumb/}
+                                                </ol>
+                                            </nav>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- / Breadcrumbs -->
+
+                            {block content/}
+                        </div>
+                        <!-- / Content -->
+                    </div>
+                    <!-- Content wrapper -->
+                </div>
+                <!-- / Layout page -->
+            </div>
+
+            <!-- Overlay -->
+            <div class="layout-overlay layout-menu-toggle"></div>
+
+            <!-- Drag Target Area To SlideIn Menu On Small Screens -->
+            <div class="drag-target"></div>
+        </div>
+        <!-- / Layout wrapper -->
+
+        <script src="{$baseUrl}/assets/vendor/libs/jquery/jquery.js"></script>
+        <script src="{$baseUrl}/assets/vendor/libs/popper/popper.js"></script>
+        <script src="{$baseUrl}/assets/vendor/js/bootstrap.js"></script>
+        <script src="{$baseUrl}/assets/vendor/js/menu.js"></script>
+        <script src="{$baseUrl}/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js"></script>
+        {block vendorJS/}
+        <script src="{$baseUrl}/assets/js/main.js"></script>
+        <script src="{$baseUrl}/assets/js/scripts.js"></script>
+    </body>
+</html>

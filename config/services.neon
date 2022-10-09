@@ -1,0 +1,5 @@
+services:
+	- App\Router\RouterFactory::createRouter
+	- App\Helper\Core
+	- App\Forms\Category\CategoryForm
+	- App\Model\Category
